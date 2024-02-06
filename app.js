@@ -32,6 +32,8 @@ app.get("/compose",(req,res)=>{
   res.render("compose")
 
 })
+
+
 app.post("/compose",(req,res)=>{
  const post = {
   title: req.body.postTitle,
@@ -46,7 +48,7 @@ app.get("/posts/:postname",(req,res)=>{
   posts.forEach(function(post){
     const storedTitle = _.lowerCase(post.title);
     if(requestedTitle === storedTitle){
-      console.log("Match found");
+      res.render("post",{posts:posts})
     }
   })
 })
